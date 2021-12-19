@@ -1,0 +1,39 @@
+# The deployment configuration for the showcase API
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: showcase-api-deployment
+  labels:
+    app: showcase-api
+    namespace: showcase-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: showcase-api
+  template:
+    metadata:
+      labels:
+        app: showcase-api
+        namespace: showcase-api
+    spec:
+      containers:
+      - name: showcase-api
+        image: <DockerRepoURL>/showcase-api:latest
+        ports:
+        - containerPort: 80
+        env:
+        - name: API_AUTH_TOKEN
+          valueFrom:
+            secretKeyRef:
+              name: api_auth_token_secret
+              key: auth_token
+        resources:
+          limits:
+            cpu: "1"
+            memory: "1Gi"
+          requests:
+            cpu: "0.1"
+            memory: "200Mi"
+      imagePullSecrets:
+        - name: regcred

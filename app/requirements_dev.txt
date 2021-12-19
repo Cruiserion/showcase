@@ -1,0 +1,5 @@
+autopep8
+bandit
+mypy
+pylint
+types-requests

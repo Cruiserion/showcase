@@ -1,0 +1,5 @@
+# Exclude the GIT history
+.git
+
+# Exclude the python dev requirements file
+**/reqirements_dev.txt
