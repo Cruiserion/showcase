@@ -1,5 +1,4 @@
 # Showcase API
-A showcase API for job applications
 
 ## Local development setup
 
